@@ -22,4 +22,9 @@ const persistConfig = {
     storage,
     whitelist: ['value'] 
 }
-export const persistedClicksReducer = persistReducer(persistConfig, clicksSlice.reducer)
+export const ClicksReducer = persistReducer(persistConfig, clicksSlice.reducer)
+
+
+// Selectors
+export const getClicksValue = (state) => state.clicks.value;
+

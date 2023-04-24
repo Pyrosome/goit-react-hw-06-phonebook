@@ -1,10 +1,10 @@
 import { useSelector, useDispatch } from 'react-redux'
-import { update } from 'redux/clicksSlice';
+import { getClicksValue, update } from 'redux/clicksSlice';
 
 
 export const App = () => {
   
-  const value = useSelector(state => state.clicks.value)
+  const value = useSelector(getClicksValue)
   const dispatch = useDispatch();
   
   return (
