@@ -1,19 +1,20 @@
 import { configureStore } from '@reduxjs/toolkit'
-import { ClicksReducer } from './clicksSlice'
+import { ContactsReducer } from './contactsSlice'
+import { FilterReducer } from './filterSlice'
 import {
-  persistStore, 
-  FLUSH,
-  REHYDRATE,
-  PAUSE,
-  PERSIST,
-  PURGE,
-  REGISTER,
+    persistStore, 
+    FLUSH,
+    REHYDRATE,
+    PAUSE,
+    PERSIST,
+    PURGE,
+    REGISTER,
 } from 'redux-persist'
-
 
 export const store = configureStore({
     reducer: {
-        clicks: ClicksReducer
+        contacts: ContactsReducer,
+        filter: FilterReducer
     },
     middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({
@@ -22,5 +23,4 @@ export const store = configureStore({
       },
     }),
 })
-
 export const persistor = persistStore(store)

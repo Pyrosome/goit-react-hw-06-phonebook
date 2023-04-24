@@ -1,19 +1,17 @@
-import { useSelector, useDispatch } from 'react-redux'
-import { getClicksValue, update } from 'redux/clicksSlice';
-
+import ContactForm from './ContactForm';
+import ContactList from './ContactList';
+import Filter from './Filter';
 
 export const App = () => {
-  
-  const value = useSelector(getClicksValue)
-  const dispatch = useDispatch();
   
   return (
     <div style={{margin: '10px'}}>
        
-      <p>Number of clicks : { value }</p>
-      <button type="button" onClick={() => dispatch(update(-5))}> -5 </button>
-      <button type="button" onClick={() => dispatch(update(5))}> +5 </button>
-      <button type="button" onClick={() => dispatch(update(20))}> +10 </button>
+      <h1>Phonebook</h1>
+      <ContactForm/>
+      <h2 style={{ margin: '0px', marginTop: '50px' }}>Contacts</h2>
+      <Filter/>
+      <ContactList/>
 
     </div>
   );
