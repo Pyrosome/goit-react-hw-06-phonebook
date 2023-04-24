@@ -1,10 +1,12 @@
 import { createSlice } from '@reduxjs/toolkit'
+import persistReducer from 'redux-persist/es/persistReducer'
+import storage from 'redux-persist/lib/storage' // defaults to localStorage for web
 
 const initialState = {
   value: 0,
 }
 
-export const clicksSlice = createSlice({
+const clicksSlice = createSlice({
   name: 'clicks',
   initialState,
   reducers: {
@@ -13,6 +15,11 @@ export const clicksSlice = createSlice({
     },
   },
 })
-
-// Action creators are generated for each case reducer function
 export const { update } = clicksSlice.actions
+
+const persistConfig = {
+    key: 'root',
+    storage,
+    whitelist: ['value'] 
+}
+export const persistedClicksReducer = persistReducer(persistConfig, clicksSlice.reducer)
